@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading;
 
-namespace GZipCompressionEx
+namespace GZipCompressionEx.GZipCore
 {
 	public class GZipCompressor : GZipTemplateMethod
 	{
@@ -55,7 +55,7 @@ namespace GZipCompressionEx
 				Rwl.ExitWriteLock();
 			}
 		}
-
+		
 		private void CompressFile(byte[] chunk)
 		{
 			using (var memoryStream = new MemoryStream())

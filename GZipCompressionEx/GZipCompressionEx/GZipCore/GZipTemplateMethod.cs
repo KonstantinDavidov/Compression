@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading;
 
-namespace GZipCompressionEx
+namespace GZipCompressionEx.GZipCore
 {
 	public abstract class GZipTemplateMethod
 	{

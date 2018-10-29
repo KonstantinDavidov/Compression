@@ -4,7 +4,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading;
 
-namespace GZipCompressionEx
+namespace GZipCompressionEx.GZipCore
 {
 	public class GZipDecompressor : GZipTemplateMethod
 	{
@@ -36,22 +36,31 @@ namespace GZipCompressionEx
 
 		protected override void Write(byte[] chunk)
 		{
-			using (var file = new FileStream(PathToOutputFile, FileMode.Append))
+			Rwl.EnterWriteLock();
+			try
 			{
-				file.Write(chunk, 0, chunk.Length);
-				ProgressTick();
+				using (var file = new FileStream(PathToOutputFile, FileMode.Append))
+				{
+					file.Write(chunk, 0, chunk.Length);
+					ProgressTick();
+				}
+			}
+			finally
+			{
+				Rwl.ExitWriteLock();
 			}
 		}
-		
+
 		private void DecompressFile(byte[] compressedChunk, long decompressedChunkLength)
 		{
 			var result = new byte[decompressedChunkLength];
 			using (var ms = new MemoryStream(compressedChunk))
 			{
 				using (var gz = new GZipStream(ms, CompressionMode.Decompress))
+				{
 					gz.Read(result, 0, result.Length);
-
-				WriteQueue.EnqueueItem(() => Write(result.ToArray()));
+					WriteQueue.EnqueueItem(() => Write(result.ToArray()));
+				}
 			}
 		}
 	}

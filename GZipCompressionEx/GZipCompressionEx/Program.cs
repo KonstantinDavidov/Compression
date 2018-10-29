@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using GZipCompressionEx.GZipCore;
 
 namespace GZipCompressionEx
 {
@@ -11,11 +12,11 @@ namespace GZipCompressionEx
 		static void Main(string[] args)
 		{
 			var validator = new ApplicationValidator();
-			//if (!validator.IsInputParamsValid(args))
-			if (false)
+			if (!validator.IsInputParamsValid(args))
 			{
 				Console.WriteLine(
-					"Incorrect parameters. There should be 3 input parameters:\n1. Algorythm type (compress, decompress).\n" +
+					"Incorrect parameters. There should be 3 input parameters:\n" +
+					"1. Algorythm type (compress, decompress).\n" +
 					"2. Path to input file.\n" +
 					"3. Path to output file. "
 				);
@@ -23,17 +24,13 @@ namespace GZipCompressionEx
 			}
 			else
 			{
-				//var inputAlgType = args[0];
-				//var pathToInputFile = args[1];
-				//var pathToOutputFile = args[2];
+				var inputAlgType = args[0];
+				var pathToInputFile = args[1];
+				var pathToOutputFile = args[2];
 
 				//var inputAlgType = "compress";
-				//var pathToInputFile = "D:\\Projects\\Compression\\GZipCompressionEx\\Sil.mkv";
-				//var pathToOutputFile = "zzz";
-
-				var inputAlgType = "decompress";
-				var pathToInputFile = "D:\\Projects\\Compression\\GZipCompressionEx\\zzz.gz";
-				var pathToOutputFile = "zzz";
+				//var pathToInputFile = "PathToInputFile";
+				//var pathToOutputFile = "PathToOutputFile";
 
 				OperationType algType;
 				List<string> errors;
