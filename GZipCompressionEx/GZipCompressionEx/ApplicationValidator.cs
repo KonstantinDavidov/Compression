@@ -11,7 +11,7 @@ namespace GZipCompressionEx
 			return args.Length == 3;
 		}
 
-		public bool ValidateInputParams(string algType, string pathToInputFile, string pathToOutputFile, out ApplicationParams.Type validAlgType, out List<string> errorMessages)
+		public bool ValidateInputParams(string algType, string pathToInputFile, string pathToOutputFile, out OperationType validAlgType, out List<string> errorMessages)
 		{
 			errorMessages = new List<string>(3);
 

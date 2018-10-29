@@ -10,6 +10,7 @@ namespace GZipCompressionEx
 			var fis = typeof(T).GetFields();
 
 			result = default(T);
+
 			foreach (var fi in fis)
 			{
 				var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);

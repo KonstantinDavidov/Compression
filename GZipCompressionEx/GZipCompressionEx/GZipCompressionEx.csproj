@@ -64,12 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationParams.cs" />
+    <Compile Include="GZipCore\OperationType.cs" />
     <Compile Include="ApplicationValidator.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="GZipCompressor.cs" />
-    <Compile Include="GZipDecompressor.cs" />
-    <Compile Include="GZipTemplateMethod.cs" />
+    <Compile Include="GZipCore\GZipCompressor.cs" />
+    <Compile Include="GZipCore\GZipDecompressor.cs" />
+    <Compile Include="GZipCore\GZipTemplateMethod.cs" />
     <Compile Include="ProducerConsumerQueue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,5 +87,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

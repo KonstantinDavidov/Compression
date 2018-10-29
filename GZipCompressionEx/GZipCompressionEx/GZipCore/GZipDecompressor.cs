@@ -21,13 +21,13 @@ namespace GZipCompressionEx
 			{
 				while (fs.Position < fs.Length)
 				{
-					var lengthBuffer = new byte[8];
-					fs.Read(lengthBuffer, 0, lengthBuffer.Length);
-					var blockLength = BitConverter.ToInt32(lengthBuffer, 4);
+					var gzipHeader = new byte[8];
+					fs.Read(gzipHeader, 0, gzipHeader.Length);
+					var blockLength = BitConverter.ToInt32(gzipHeader, 4);
 					var compressedData = new byte[blockLength];
-					lengthBuffer.CopyTo(compressedData, 0);
+					gzipHeader.CopyTo(compressedData, 0);
 
-					fs.Read(compressedData, lengthBuffer.Length, blockLength - lengthBuffer.Length);
+					fs.Read(compressedData, gzipHeader.Length, blockLength - gzipHeader.Length);
 					var dataSize = BitConverter.ToInt32(compressedData, blockLength - 4);
 					CompressQueue.EnqueueItem(() => DecompressFile(compressedData, dataSize));
 				}
@@ -36,18 +36,10 @@ namespace GZipCompressionEx
 
 		protected override void Write(byte[] chunk)
 		{
-			Rwl.EnterWriteLock();
-			try
+			using (var file = new FileStream(PathToOutputFile, FileMode.Append))
 			{
-				using (var file = new FileStream(PathToOutputFile, FileMode.Append))
-				{
-					file.Write(chunk, 0, chunk.Length);
-					ProgressTick();
-				}
-			}
-			finally
-			{
-				Rwl.ExitWriteLock();
+				file.Write(chunk, 0, chunk.Length);
+				ProgressTick();
 			}
 		}
 		

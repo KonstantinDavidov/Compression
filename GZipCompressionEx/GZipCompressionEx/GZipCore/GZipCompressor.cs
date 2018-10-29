@@ -61,9 +61,7 @@ namespace GZipCompressionEx
 			using (var memoryStream = new MemoryStream())
 			{
 				using (var cs = new GZipStream(memoryStream, CompressionMode.Compress))
-				{
 					cs.Write(chunk, 0, chunk.Length);
-				}
 
 				var compressedData = memoryStream.ToArray();
 				WriteQueue.EnqueueItem(() => Write(compressedData));

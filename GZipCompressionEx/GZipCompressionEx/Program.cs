@@ -35,7 +35,7 @@ namespace GZipCompressionEx
 				var pathToInputFile = "D:\\Projects\\Compression\\GZipCompressionEx\\zzz.gz";
 				var pathToOutputFile = "zzz";
 
-				ApplicationParams.Type algType;
+				OperationType algType;
 				List<string> errors;
 				validator.ValidateInputParams(inputAlgType, pathToInputFile, pathToOutputFile, out algType, out errors);
 
@@ -49,11 +49,19 @@ namespace GZipCompressionEx
 					var sw = new Stopwatch();
 					sw.Start();
 
-					var gzipCompressor = algType == ApplicationParams.Type.Compress
+					var gzipCompressor = algType == OperationType.Compress
 						? (GZipTemplateMethod) new GZipCompressor(pathToInputFile, pathToOutputFile, ReportProgress)
 						: new GZipDecompressor(pathToInputFile, pathToOutputFile, ReportProgress);
 
-					gzipCompressor.Start();
+					try
+					{
+						gzipCompressor.Start();
+					}
+					catch (Exception e)
+					{
+						Console.WriteLine(e);
+						throw;
+					}
 
 					sw.Stop();
 					Console.WriteLine("\nExecuted time (milliseconds): " + sw.ElapsedMilliseconds);
