@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace GZipCompressionEx
+namespace GZipTest
 {
 	public class ProducerConsumerQueue
 	{

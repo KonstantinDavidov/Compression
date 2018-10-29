@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace GZipCompressionEx.GZipCore
+namespace GZipTest.GZipCore
 {
 	public enum OperationType
 	{

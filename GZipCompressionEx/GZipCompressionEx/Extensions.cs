@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace GZipCompressionEx
+namespace GZipTest
 {
 	public static class Extensions
 	{

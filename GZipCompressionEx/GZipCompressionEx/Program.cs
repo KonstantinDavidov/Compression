@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using GZipCompressionEx.GZipCore;
+using GZipTest.GZipCore;
 
-namespace GZipCompressionEx
+namespace GZipTest
 {
 	class Program
 	{

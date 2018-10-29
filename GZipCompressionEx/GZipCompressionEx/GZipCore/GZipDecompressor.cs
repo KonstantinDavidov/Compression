@@ -4,13 +4,13 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading;
 
-namespace GZipCompressionEx.GZipCore
+namespace GZipTest.GZipCore
 {
 	public class GZipDecompressor : GZipTemplateMethod
 	{
 		private static readonly ReaderWriterLockSlim Rwl = new ReaderWriterLockSlim();
 
-		public GZipDecompressor(string pathToInputFile, string pathToOutputFile, Action<double> reportProgressPercentAction) 
+		public GZipDecompressor(string pathToInputFile, string pathToOutputFile, Action<double> reportProgressPercentAction)
 			: base(pathToInputFile, pathToOutputFile, reportProgressPercentAction)
 		{
 		}

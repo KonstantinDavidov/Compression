@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading;
 
-namespace GZipCompressionEx.GZipCore
+namespace GZipTest.GZipCore
 {
 	public class GZipCompressor : GZipTemplateMethod
 	{

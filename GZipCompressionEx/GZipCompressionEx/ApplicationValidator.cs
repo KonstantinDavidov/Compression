@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using GZipCompressionEx.GZipCore;
+using GZipTest.GZipCore;
 
-namespace GZipCompressionEx
+namespace GZipTest
 {
 	public class ApplicationValidator
 	{
