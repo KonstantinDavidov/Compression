@@ -27,10 +27,6 @@ namespace GZipTest
 				var pathToInputFile = args[1];
 				var pathToOutputFile = args[2];
 
-				//var inputAlgType = "compress";
-				//var pathToInputFile = "PathToInputFile";
-				//var pathToOutputFile = "PathToOutputFile";
-
 				OperationType algType;
 				List<string> errors;
 				validator.ValidateInputParams(inputAlgType, pathToInputFile, pathToOutputFile, out algType, out errors);
@@ -55,6 +51,7 @@ namespace GZipTest
 					}
 					catch (Exception e)
 					{
+						sw.Stop();
 						Console.WriteLine(e);
 						throw;
 					}
